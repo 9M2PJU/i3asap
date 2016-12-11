@@ -21,7 +21,7 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
 2. apt-get: uninstall redundant apps of current desktop environment [uninstall list]
-3. apt-get: install i3-vm and [install list]
+3. apt-get: install i3-wm, i3-lock, i3-bar, dwm-tools, suckless-tools and [install list]
 4. gksudo firefox -install-global-extension: install [firefox addon list]
 5. sqlite: create firefox bookmarks 
 5. passwd: change the root password
