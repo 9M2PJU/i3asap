@@ -3,7 +3,7 @@
 Auto setup i3 desktop environment for kali linux live cd, as an alternative to customizing the iso.
 
 Created to stop wasting time installing the same apps over and over and getting rid of of that 
-awful live cd feeling. It should be easily portable to any debian based live cd. 
+awful live cd feeling. It should be easy to port to any debian based live cd.
   
 Simply wget the setup.sh file and run [insert tiny url link here] or
 [insert raw github link here]. 
@@ -16,12 +16,12 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
   - misc dotfiles (e.g. .fonts/, .zshrc, .vimrc, aliases, ..)
   - firefox addon list (e.g. noscript, tamper data, ublock origin, HackBar, REST Easy, HTTPS Everywhere, JavaScript Deobfuscator, ..),
   - firefox bookmark list
-  - application list (e.g. feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, ..)
+  - application install list (e.g. feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, ..)
+  - application remove list (e.g. , ..)
 1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
-2. grep: identify current desktop environment 
-2. apt-get: uninstall redundant apps of desktop environment
-3. apt-get: install i3-vm and [application list]
+2. apt-get: uninstall redundant apps of current desktop environment [uninstall list]
+3. apt-get: install i3-vm and [install list]
 4. gksudo firefox -install-global-extension: install [firefox addon list]
 5. sqlite: create firefox bookmarks 
 5. passwd: change the root password
