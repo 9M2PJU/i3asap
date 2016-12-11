@@ -6,7 +6,7 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 
 ## What it does
 0. passwd: you should change the root password
-1. grep: verify if we are in a virtualbox environment 
+1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
 2. grep: identify current desktop environment 
 2. apt-get: uninstall desktop environment
