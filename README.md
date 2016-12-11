@@ -1,9 +1,9 @@
 # kali0conf
 ## Intro
-Auto setup i3 desktop environment for kali linux live cd 
-- as an alternative to customizing the iso.
+Auto setup i3 desktop environment for kali linux live cd, as an alternative to customizing the iso.
 
-Once ran your system no longer have that awful live cd feeling.
+After running kali0conf your system should no longer have that 
+awful live cd feeling. 
 
 It should be easily portable to any debian based live cd. 
   
@@ -11,6 +11,7 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 [insert raw github link here]. 
 
 ## What it does
+0. Select configs (see screenshots in config folder)
 0. passwd: you should change the root password
 1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
