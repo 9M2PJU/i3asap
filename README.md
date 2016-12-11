@@ -12,7 +12,7 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 
 ## What it does
 0. Select config bundle (see screenshots in config folder)
-3. download: wallpaper, .i3 files, .font directory, .zshrc, .vimrc, .compton.conf, .xinitrc
+3. download: wallpaper, .i3 files, .font directory, dotfiles, firefox addon list, application list
 0. passwd: you should change the root password
 1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
