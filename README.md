@@ -12,14 +12,26 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 
 ## What it does
 0. Select config bundle (see screenshots in config folder)
-3. download: wallpaper, .i3 files, .font directory, dotfiles, firefox addon list, application list
-0. passwd: you should change the root password
+3. download config bundle: 
+  - wallpaper, 
+  - .i3 config files, 
+  - .font directory, 
+  - misc dotfiles (e.g. .zshrc, .vimrc, aliases, , 
+  - firefox addon list (e.g. noscript, tamper data, ublock origin, HackBar, REST Easy, HTTPS Everywhere, JavaScript Deobfuscator),
+  - firefox bookmark list
+  - application list (e.g. feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, .. todo)
 1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
 2. grep: identify current desktop environment 
 2. apt-get: uninstall redundant apps of desktop environment
-3. apt-get: install i3-vm, dmenu, feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, .. todo 
-4. gksudo firefox -install-global-extension: Install noscript, tamper data, ublock origin, HackBar, REST Easy, HTTPS Everywhere, JavaScript Deobfuscator (firefox addons) 
+3. apt-get: install i3-vm and [application list]
+4. gksudo firefox -install-global-extension: install [firefox addon list]
+5. sqlite: create firefox bookmarks 
+5. passwd: change the root password
 4. useradd: create non-root user 
+5. passwd: set the non-root user password 
+5. mv: move i3 configs, dotfiles to the user's home directory 
 4. .... todo .....
-4. logout root and login as non-root user in a brand new i3 environment
+8. logout
+
+Finally login and enjoy your brand new i3 environment
