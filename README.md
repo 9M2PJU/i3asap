@@ -2,10 +2,8 @@
 ## Intro
 Auto setup i3 desktop environment for kali linux live cd, as an alternative to customizing the iso.
 
-After running kali0conf your system should no longer have that 
-awful live cd feeling. 
-
-It should be easily portable to any debian based live cd. 
+Created to stop wasting time installing the same apps over and over and getting rid of of that 
+awful live cd feeling. It should be easily portable to any debian based live cd. 
   
 Simply wget the setup.sh file and run [insert tiny url link here] or
 [insert raw github link here]. 
