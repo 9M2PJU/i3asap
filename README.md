@@ -12,12 +12,11 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 0. Select config bundle (see screenshots in config folder)
 3. download config bundle: 
   - wallpaper, 
-  - .i3 config files, 
-  - .font directory, 
-  - misc dotfiles (e.g. .zshrc, .vimrc, aliases, , 
-  - firefox addon list (e.g. noscript, tamper data, ublock origin, HackBar, REST Easy, HTTPS Everywhere, JavaScript Deobfuscator),
+  - .i3 config
+  - misc dotfiles (e.g. .fonts/, .zshrc, .vimrc, aliases, ..)
+  - firefox addon list (e.g. noscript, tamper data, ublock origin, HackBar, REST Easy, HTTPS Everywhere, JavaScript Deobfuscator, ..),
   - firefox bookmark list
-  - application list (e.g. feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, .. todo)
+  - application list (e.g. feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, ..)
 1. grep: check if we are in a virtualbox environment 
 1. apt-get: install virtualbox guest addons
 2. grep: identify current desktop environment 
