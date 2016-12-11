@@ -19,6 +19,7 @@ Simply wget the setup.sh file and run [insert tiny url link here] or
 2. grep: identify current desktop environment 
 2. apt-get: uninstall redundant apps of desktop environment
 3. apt-get: install i3-vm, dmenu, feh, ncdu, htop, alpine, iptraf, mc, irssi, atop, .. todo 
+4. gksudo firefox -install-global-extension: Install noscript, tamper data, ublock origin, HackBar, REST Easy, HTTPS Everywhere, JavaScript Deobfuscator (firefox addons) 
 4. useradd: create non-root user 
 4. .... todo .....
 4. logout root and login as non-root user in a brand new i3 environment
