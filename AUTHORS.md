@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Steve Tabernacle <null>
+* Steve Tabernacle <stevetabernacle@users.noreply.github.com>
 
 Contributors
 ------------

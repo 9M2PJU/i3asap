@@ -24,7 +24,7 @@ setup(
     description="auto setup kali linux i3 desktop",
     long_description=readme + '\n\n' + history,
     author="Steve Tabernacle",
-    author_email='null',
+    author_email='stevetabernacle@users.noreply.github.com',
     url='https://github.com/stevetabernacle/kali0conf',
     packages=[
         'kali0conf',
