@@ -1,4 +1,6 @@
+import json
 import re
+import urllib2
 
 _slugify_strip_re = re.compile(r'[^\w\s-]')
 _slugify_hyphenate_re = re.compile(r'[-\s]+')
@@ -17,3 +19,13 @@ def slugify(value):
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
     value = unicode(_slugify_strip_re.sub('', value).strip().lower())
     return _slugify_hyphenate_re.sub('-', value)
+
+
+def fetchJSON(remote):
+    handle = urllib2.urlopen(remote)
+    text = []
+    while True:
+        chunk = handle.read(1024)
+        if not chunk: break
+        text.append(chunk)
+    return json.loads("".join(chunk))

@@ -1,4 +1,0 @@
-https://addons.mozilla.org/firefox/downloads/latest/tamper-data/addon-966-latest.xpi
-https://addons.mozilla.org/firefox/downloads/latest/hackbar/addon-3899-latest.xpi
-https://addons.mozilla.org/firefox/downloads/latest/noscript/addon-722-latest.xpi
-

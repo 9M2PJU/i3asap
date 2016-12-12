@@ -1,0 +1,22 @@
+{
+  "name": "Flat Dark",
+  "version": "0.1",
+  "url": "",
+  "files": [
+     {
+        "local": "~/.Xresources",
+        "remote": "/.Xresources"
+     }, {
+        "local": "~/.config_panel_bar_config",
+        "remote": "/.config_panel_bar_config"
+     }, {
+        "local": "~/.config_panel_bar_pop",
+        "remote": "/.config_panel_bar_pop"
+     }, {
+        "local": "~/.config_panel_empty_conky",
+        "remote": "/.config_panel_empty_conky"
+     }
+  ],
+  "install": "feh ncdu htop alpine iptraf mc irssi atop",
+  "purge": ""
+}

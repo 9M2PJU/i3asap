@@ -5,7 +5,7 @@ import urllib2
 from threading import Thread
 
 
-class Downloader(Thread):
+class AsynkDownloader(Thread):
     """
     urls: format {"saveAs": "remote url"}
     """
