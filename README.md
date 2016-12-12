@@ -4,13 +4,14 @@ Note: Early development - consider the below a roadmap
 
 # i3asap
 ## Intro
-Auto setup i3 desktop environment for kali linux live cd, as an alternative to customizing the iso.
-
-Created to stop wasting time installing the same apps over and over and getting rid of of that 
-awful live cd feeling. It should be easy to port to any debian based live cd.
+We all love i3 but it is quite the hassle setting it up everytime you launch a live cd.
+What if we could easily configure our live systems based on a amazing collection
+ of i3/vim/fonts/..whatever-dotfiles. 
+ 
+Let's stop wasting time installing the same apps over and over and configuring dotfiles
+ to get rid of of that awful live cd feeling.
   
-Simply wget the setup.sh file and run [insert tiny url link here] or
-[insert raw github link here]. 
+Simply wget [insert tiny url link here] or [insert raw github link here] and run. 
 
 ## What it does
 0. Select config bundle (see screenshots in config folder)
