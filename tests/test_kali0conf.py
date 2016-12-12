@@ -14,7 +14,7 @@ import unittest
 from contextlib import contextmanager
 from click.testing import CliRunner
 
-from i3asap import i3asap
+from i3asap import models
 from i3asap import cli
 
 
