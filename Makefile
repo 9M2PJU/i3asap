@@ -48,7 +48,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr htmlcov/
 
 lint: ## check style with flake8
-	flake8 kali0conf tests
+	flake8 i3asap tests
 
 test: ## run tests quickly with the default Python
 	
@@ -59,16 +59,16 @@ test-all: ## run tests on every Python version with tox
 
 coverage: ## check code coverage quickly with the default Python
 	
-		coverage run --source kali0conf setup.py test
+		coverage run --source i3asap setup.py test
 	
 		coverage report -m
 		coverage html
 		$(BROWSER) htmlcov/index.html
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/kali0conf.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ kali0conf
+	rm -f docs/i3asap.md
+	rm -f docs/modules.md
+	sphinx-apidoc -o docs/ i3asap
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html

@@ -19,28 +19,28 @@ test_requirements = [
 ]
 
 setup(
-    name='kali0conf',
+    name='i3asap',
     version='0.1.0',
     description="auto setup kali linux i3 desktop",
     long_description=readme + '\n\n' + history,
     author="Steve Tabernacle",
     author_email='stevetabernacle@users.noreply.github.com',
-    url='https://github.com/stevetabernacle/kali0conf',
+    url='https://github.com/stevetabernacle/i3asap',
     packages=[
-        'kali0conf',
+        'i3asap',
     ],
-    package_dir={'kali0conf':
-                 'kali0conf'},
+    package_dir={'i3asap':
+                 'i3asap'},
     entry_points={
         'console_scripts': [
-            'kali0conf=kali0conf.cli:main'
+            'i3asap=i3asap.cli:main'
         ]
     },
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='kali0conf',
+    keywords='i3asap',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

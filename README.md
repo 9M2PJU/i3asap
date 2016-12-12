@@ -1,6 +1,8 @@
-# Note: In development - consider the below a roadmap
+~~~
+Note: Early development - consider the below a roadmap
+~~~
 
-# kali0conf
+# i3asap
 ## Intro
 Auto setup i3 desktop environment for kali linux live cd, as an alternative to customizing the iso.
 

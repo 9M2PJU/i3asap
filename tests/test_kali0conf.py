@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_kali0conf
+test_i3asap
 ----------------------------------
 
-Tests for `kali0conf` module.
+Tests for `i3asap` module.
 """
 
 
@@ -14,12 +14,12 @@ import unittest
 from contextlib import contextmanager
 from click.testing import CliRunner
 
-from kali0conf import kali0conf
-from kali0conf import cli
+from i3asap import i3asap
+from i3asap import cli
 
 
 
-class TestKali0conf(unittest.TestCase):
+class TestI3ASAP(unittest.TestCase):
 
     def setUp(self):
         pass
@@ -34,7 +34,7 @@ class TestKali0conf(unittest.TestCase):
         runner = CliRunner()
         result = runner.invoke(cli.main)
         assert result.exit_code == 0
-        assert 'kali0conf.cli.main' in result.output
+        assert 'i3asap.cli.main' in result.output
         help_result = runner.invoke(cli.main, ['--help'])
         assert help_result.exit_code == 0
         assert '--help  Show this message and exit.' in help_result.output

@@ -11,3 +11,10 @@ Contributors
 ------------
 
 None yet. Why not be the first?
+
+Dotfile credits
+------------
+
+* Lucafav<http://dotshare.it/~lucafav/>
+
+The dotfile authors does not necessarily endorse this project.
