@@ -31,12 +31,17 @@ def main(bundle):
     manifest = fetchJSON(repository + "master/bundles/" + bundle + "/manifest.json")
 
     # Download all specified files, e.g. dotfiles and wallpaper
-    downloads = AsynkDownloader(manifest["files"], pwd, repository + "master/bundles/" + bundle + "/")
+    downloads = AsynkDownloader(manifest["files"], pwd, repository + "master/bundles/" + bundle + "/bundle/")
     downloads.start()
 
-    # Install / purge specified programs
-    click.echo("apt-get purge " + manifest["purge"])
-    click.echo("apt-get install " + manifest["install"])
+    # Purge specified programs
+    if "purge" in manifest and len(manifest["purge"]) > 1:
+        click.echo("apt-get purge " + manifest["purge"])
+
+    # Install specified programs
+    if "install" in manifest and len(manifest["install"]) > 1:
+        click.echo("apt-get install " + manifest["install"])
+
     # Install i3
     click.echo("apt-get install " + i3_base_packages)
 
