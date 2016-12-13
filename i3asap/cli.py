@@ -9,6 +9,7 @@ import time
 from helpers import slugify, fetchJSON
 from models import AsynkDownloader
 
+
 @click.command()
 @click.option('--bundle',
               prompt='What bundle do you want to use:',
@@ -16,25 +17,37 @@ from models import AsynkDownloader
               default='flat-dark')
 def main(bundle):
     """Console script for i3asap"""
+    i3_base_packages = "i3-wm i3-lock i3-bar dwm-tools suckless-tools"
+    repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/"
+    pwd = expanduser("~") + "/.i3asap/" + bundle + "/"
     bundle = slugify(bundle)
-
-    repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap"
-    pwd = expanduser("~")+"/.i3asap/"+bundle+"/"
 
     if not os.path.exists(pwd):
         os.makedirs(pwd)
 
-    click.echo("Downloading "+repository+"/master/bundles/" + bundle)
+    # Download manifest to get started
+    click.echo("Downloading " + repository + "master/bundles/" + bundle)
 
-    manifest = fetchJSON(repository+"/master/bundles/" + bundle + "/manifest.json")
+    manifest = fetchJSON(repository + "master/bundles/" + bundle + "/manifest.json")
 
-    downloads = AsynkDownloader(manifest["files"], pwd)
+    # Download all specified files, e.g. dotfiles and wallpaper
+    downloads = AsynkDownloader(manifest["files"], pwd, repository + "master/bundles/" + bundle + "/")
     downloads.start()
 
-    click.echo("apt-get purge "+manifest["install"])
-    click.echo("apt-get install "+manifest["install"])
+    # Install / purge specified programs
+    click.echo("apt-get purge " + manifest["purge"])
+    click.echo("apt-get install " + manifest["install"])
+    # Install i3
+    click.echo("apt-get install " + i3_base_packages)
 
+    # todo Create new user
+
+    # Wait until downloads are complete
     downloads.join()
+
+    # todo Move dotfiles, wallpapers etc to proper paths
+    # todo Set wallpaper if specified
+    # todo Switch user to new user
 
 if __name__ == "__main__":
     start = time.time()

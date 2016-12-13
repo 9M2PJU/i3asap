@@ -26,6 +26,7 @@ def fetchJSON(remote):
     text = []
     while True:
         chunk = handle.read(1024)
-        if not chunk: break
+        if not chunk:
+            break
         text.append(chunk)
-    return json.loads("".join(chunk))
+    return json.loads("".join(text))

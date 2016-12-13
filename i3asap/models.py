@@ -9,19 +9,22 @@ class AsynkDownloader(Thread):
     """
     urls: format {"saveAs": "remote url"}
     """
-    def __init__(self, urls, directory):
+    def __init__(self, urls, directory, base_url):
         Thread.__init__(self)
         self.urls = urls
         self.directory = directory
+        self.base_url = base_url
 
     def run(self):
-        for name, url in self.urls.items():
-            handle = urllib2.urlopen(url)
-            fname = self.directory+name
+        for file in self.urls:
+            handle = urllib2.urlopen(self.base_url + file["name"])
+            fname = self.directory + file["name"]
+            # todo download to correct folder directly
             with open(fname, "wb") as f_handler:
                 while True:
                     chunk = handle.read(1024)
-                    if not chunk: break
+                    if not chunk:
+                        break
                     f_handler.write(chunk)
 
 
