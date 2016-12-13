@@ -3,6 +3,9 @@
   "version": "0.1",
   "files": [
      {
+        "name": "unsplash.jpg",
+        "saveTo": "/usr/share/backgrounds/"
+     }, {
         "name": ".Xresources",
         "saveTo": "~/"
      }, {
