@@ -3,17 +3,17 @@
   "version": "0.1",
   "files": [
      {
-        "saveTo": "~/",
-        "name": ".Xresources"
+        "name": ".Xresources",
+        "saveTo": "~/"
      }, {
-        "saveTo": "~/",
-        "name": ".config_panel_bar_config"
+        "name": ".config_panel_bar_config",
+        "saveTo": "~/"
      }, {
-        "saveTo": "~/",
-        "name": ".config_panel_bar_pop"
+        "name": ".config_panel_bar_pop",
+        "saveTo": "~/"
      }, {
-        "saveTo": "~/",
-        "remote": ".config_panel_empty_conky"
+        "name": ".config_panel_empty_conky",
+        "saveTo": "~/"
      }
   ],
   "install": "feh ncdu htop alpine iptraf mc irssi atop",

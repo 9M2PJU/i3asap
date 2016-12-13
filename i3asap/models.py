@@ -16,9 +16,9 @@ class AsynkDownloader(Thread):
         self.base_url = base_url
 
     def run(self):
-        for file in self.urls:
-            handle = urllib2.urlopen(self.base_url + file["name"])
-            fname = self.directory + file["name"]
+        for remote_file in self.urls:
+            handle = urllib2.urlopen(self.base_url + remote_file["name"])
+            fname = self.directory + remote_file["name"]
             # todo download to correct folder directly
             with open(fname, "wb") as f_handler:
                 while True:

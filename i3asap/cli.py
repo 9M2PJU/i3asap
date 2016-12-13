@@ -26,7 +26,7 @@ def main(bundle):
         os.makedirs(pwd)
 
     # Download manifest to get started
-    click.echo("Downloading " + repository + "master/bundles/" + bundle)
+    click.echo("Downloading " + bundle)
 
     manifest = fetchJSON(repository + "master/bundles/" + bundle + "/manifest.json")
 
