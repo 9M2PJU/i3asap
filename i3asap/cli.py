@@ -51,7 +51,7 @@ def main(bundle, ok):
     # Download all specified files, e.g. dotfiles and wallpaper
 
     wallpaper = AsynkDownloader([{"name": manifest["wallpaper"],
-                                  "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}],
+                                  "saveAs": "/usr/share/backgrounds/wallpaper.jpg"}],
                                 repository + "/bundle/")
     wallpaper.start()
 
