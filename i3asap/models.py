@@ -5,6 +5,7 @@ import urllib2
 
 from threading import Thread
 
+from sys import platform
 from os.path import expanduser
 
 import crypt
@@ -46,6 +47,10 @@ class NixSystem():
     def home_dir(self):
         pass
 
+    def verifyOS(self):
+        if platform != "linux" and platform != "linux2":
+            return False
+        return True
     """
     Execute and return stdout
     """

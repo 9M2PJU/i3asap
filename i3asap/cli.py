@@ -2,7 +2,7 @@
 
 import click
 from os.path import expanduser
-import os
+import os, sys
 
 from datetime import datetime
 
@@ -22,6 +22,10 @@ def main(bundle):
     startTime = datetime.now()
 
     nix = KaliLinux()
+    if not nix.verifyOS():
+        click.echo("Currently this program only supports Kali Linux. Exiting..")
+        sys.exit()
+
     bundle = slugify(bundle)
     pwd = nix.home_dir() + "/.i3asap/" + bundle + "/"
     repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/"
