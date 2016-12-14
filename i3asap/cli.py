@@ -80,7 +80,7 @@ def main(bundle, ok):
     click.echo("* Wallpaper finished downloading")
 
     click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
-    
+
     try:
         input("Press Enter to switch to i3...")
     except SyntaxError:

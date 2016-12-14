@@ -5,6 +5,9 @@
      {
         "name": ".Xresources",
         "saveAs": "~/.Xresources"
+     },{
+        "name": ".xinitrc",
+        "saveAs": "~/.xinitrc"
      }, {
         "name": ".config_panel_bar_config",
         "saveAs": "./config/panel/bar_config"
