@@ -17,7 +17,7 @@ import logging
                      'permanently screw up your system. Are you sure you want to continue?',
               default='yes')
 @click.option('--bundle',
-              prompt='What bundle do you want to use:',
+              prompt='What bundle do you want to use?',
               help='The bundle to configure your system after',
               default='default')
 def main(bundle, ok):
