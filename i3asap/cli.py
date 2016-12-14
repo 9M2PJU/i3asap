@@ -54,10 +54,10 @@ def main(bundle, ok):
 
     # Download all specified files, e.g. dotfiles and wallpaper
 
-    wallpaper = AsynkDownloader(
-        {"name": manifest["wallpaper"],
-         "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}, repository)
-    dotfiles = AsynkDownloader(manifest["files"], repository)
+    wallpaper = AsynkDownloader({"name": manifest["wallpaper"],
+                                 "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}, repository)
+
+    dotfiles = AsynkDownloader(manifest["dotfiles"], repository)
     dotfiles.start()
 
     click.echo("* Uninstalling " + manifest["uninstall"])
