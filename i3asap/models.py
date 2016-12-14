@@ -51,7 +51,7 @@ class LinuxSystem(object):
     def i3_base_packages(self):
         pass
 
-    def logout(self):
+    def switch_wm(self):
         pass
 
     def verify_os(self):
@@ -82,7 +82,9 @@ class DebianLinux(LinuxSystem):
     def i3_base_packages(self):
         return "i3 suckless-tools i3-dmenu-desktop"
 
-    def logout(self):
+    def switch_wm(self):
+        with open("/etc/lightdm/lightdm.conf", "a") as conf:
+            conf.write("user-session=i3")
         return self.bash("service lightdm restart")
 
     def create_user(self, name, username, password):
@@ -104,6 +106,4 @@ class DebianLinux(LinuxSystem):
 #
 #    def uninstall(self, programs):
 #        print("apt-get -R " + programs)
-#
-#    def i3_base_packages(self):
-#        return self.install("i3")
+# ...

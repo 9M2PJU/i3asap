@@ -86,7 +86,7 @@ def main(bundle, ok):
         input("Press Enter to switch to i3 ..")
     except SyntaxError:
         pass
-    linux.logout()
+    linux.switch_wm()
 
 if __name__ == "__main__":
     main()
