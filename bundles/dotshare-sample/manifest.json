@@ -16,7 +16,7 @@
         "saveAs": "~/.config/i3/config"
      }
   ],
-  "install": "feh compton irssi rxvt-unicode",
+  "install": "feh rxvt-unicode",
   "uninstall": "",
   "wallpaper": "unsplash.jpg"
 }

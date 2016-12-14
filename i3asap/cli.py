@@ -80,9 +80,6 @@ def main(bundle, ok):
     wallpaper.join()
     click.echo("* Wallpaper finished downloading!")
 
-    click.echo("* Configuring display manager..")
-    linux.update_display_manager()
-
     click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
 
     try:
