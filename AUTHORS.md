@@ -14,7 +14,5 @@ None yet. Why not be the first?
 
 Dotfile credits
 ------------
+ * http://dotshare.it/
 
-* Lucafav<http://dotshare.it/~lucafav/>
-
-The dotfile authors does not necessarily endorse this project.

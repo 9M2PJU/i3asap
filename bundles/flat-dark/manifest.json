@@ -22,7 +22,7 @@
         "saveAs": "~/.config/i3/config"
      }
   ],
-  "install": "feh ncdu htop alpine iptraf mc irssi atop",
+  "install": "feh lm-sensors curl hddtemp",
   "uninstall": "",
   "wallpaper": "unsplash.jpg"
 }

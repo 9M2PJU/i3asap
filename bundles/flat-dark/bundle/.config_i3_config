@@ -1,260 +1,271 @@
-# i3 config file (v4)
-#
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
+# Set my variables.  Mod4 is windows button, 3 is caps lock, 2 is right ctrl
+# I use xmodmap to set this
+set $exmod  Mod4
+set $winmod Mod3
+set $netmod Mod2
+
+# Set the gaps between windows.  This is for i3-gaps only
+set $gapsinner 22
+set $gapsouter 48
+
+# Here is where I set all of my default programs
+set $browser firefox
+set $email thunderbird
+
+# Setting up my shadows, and a custom config location to match the others.
+exec compton --config ${XDG_CONFIG_HOME}/compton/config -cb
 
 # Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+# is used in the bar {} block below. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+# Use Mouse+$exmod to drag floating windows to their wanted position
+floating_modifier $winmod
+gaps inner $gapsinner
+gaps outer $gapsouter
+hide_edge_borders both
+new_window pixel 1
+workspace_auto_back_and_forth yes
 
-### THEME ###
-
-set $FOCUS #989898
-set $UNFOCUS #3c3b37
-
-# Layout colors 	    bord 	bg 		text    indicator (split)
-client.focused 			$FOCUS $FOCUS $FOCUS $FOCUS
-client.focused_inactive $UNFOCUS $UNFOCUS $UNFOCUS $UNFOCUS
-client.unfocused 		$UNFOCUS $UNFOCUS $UNFOCUS $UNFOCUS
-client.urgent 			$FOCUS $FOCUS $FOCUS $FOCUS
-client.background 		$UNFOCUS
-
-### Borders ###
-new_window pixel 4
-new_float pixel 4
-
-focus_follows_mouse no
-
-### Gaps ###
-set $default_gaps_inner 12
-set $default_gaps_outer 0
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
-
-set $ws1 I
-set $ws2 II
-set $ws3 III
-set $ws4 IV
-set $ws5 V
-set $ws6 VI
-set $ws7 VII
-set $ws8 VIII
-set $ws9 IX
-set $ws10 X
+# This makes it so that anything spawned with the class "Floating" will be...floating.
+# A good example of this is xterm:
+# bindsym $exmod+Shift+Return exec xterm -class Floating
+# Note: -class is a modifier specifically for xterm.  Other methods must
+# be used to change the class of other applications.
+for_window [class="Floating"] floating enable
+for_window [class="Octave"] floating enable
+for_window [title="Weka GUI Chooser"] floating enable
+for_window [window_role="Msgcompose"] floating enable
+for_window [window_role="pop-up"] floating enable
 
 
-# use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
-set $up k
-set $down j
-set $left h
-set $right l
+# Application Stuff
+# # #
 
-# use Mouse+Mod1 to drag floating windows to their wanted position
-floating_modifier Mod1
 
-# start a terminal
-bindsym Mod1+Return exec --no-startup-id urxvt
+bindsym $exmod+1            exec firefox
+bindsym $exmod+2            exec pcmanfm
+bindsym $exmod+3            exec uxterm -e vim
+bindsym $exmod+4            exec uxterm -class Floating -e ncmpcpp
+bindsym $exmod+5            exec uxterm -e screen irssi --home=${XDG_CONFIG_HOME}/irssi
+bindsym $exmod+a            exec arandr
+bindsym $exmod+d            exec --no-startup-id i3-dmenu-desktop
+bindsym $exmod+c            exec chromium
+bindsym $exmod+e            exec eclipse
+bindsym $exmod+j            exec scrot -s
+bindsym $exmod+m            exec $email
+bindsym $exmod+n            exec nitrogen
+bindsym $exmod+v            exec vlc
+bindsym $exmod+Return       exec uxterm
+bindsym $exmod+Shift+Return exec uxterm -class Floating
 
-# kill focused window
-bindsym Mod1+q kill
-
-# start dmenu (a program launcher)
-#bindsym Mod1+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
- bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
-bindsym Mod1+$up focus up
-bindsym Mod1+$right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
-
-# move focused window
-bindsym Mod1+Shift+$left move left
-bindsym Mod1+Shift+$down move down
-bindsym Mod1+Shift+$up move up
-bindsym Mod1+Shift+$right move right
-
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
-
-# split in horizontal orientation
-bindsym Mod1+c split h
-
-# split in vertical orientation
-bindsym Mod1+v split v
-
-# enter fullscreen mode for the focused container
-bindsym Mod1+f fullscreen
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
-
-# toggle tiling / floating
-bindsym Mod1+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym Mod1+space focus mode_toggle
-
-# focus the parent container
-bindsym Mod1+a focus parent
-
-# focus the child container
-#bindsym Mod1+d focus child
-
-# move the currently focused window to the scratchpad
-bindsym Mod1+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod1+minus scratchpad show
-
-# switch to workspace
-bindsym Mod1+1 workspace $ws1
-bindsym Mod1+2 workspace $ws2
-bindsym Mod1+3 workspace $ws3
-bindsym Mod1+4 workspace $ws4
-bindsym Mod1+5 workspace $ws5
-bindsym Mod1+6 workspace $ws6
-bindsym Mod1+7 workspace $ws7
-bindsym Mod1+8 workspace $ws8
-bindsym Mod1+9 workspace $ws9
-bindsym Mod1+0 workspace $ws10
-
-# move focused container to workspace
-bindsym Mod1+Shift+1 move container to workspace $ws1
-bindsym Mod1+Shift+2 move container to workspace $ws2
-bindsym Mod1+Shift+3 move container to workspace $ws3
-bindsym Mod1+Shift+4 move container to workspace $ws4
-bindsym Mod1+Shift+5 move container to workspace $ws5
-bindsym Mod1+Shift+6 move container to workspace $ws6
-bindsym Mod1+Shift+7 move container to workspace $ws7
-bindsym Mod1+Shift+8 move container to workspace $ws8
-bindsym Mod1+Shift+9 move container to workspace $ws9
-bindsym Mod1+Shift+0 move container to workspace $ws10
+# Kill the focused window
+bindsym $exmod+Shift+q      kill
 
 # reload the configuration file
-bindsym Mod1+Shift+c reload
+bindsym $exmod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod1+Shift+r restart
+bindsym $exmod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
-bindsym Mod1+Shift+e exec --no-startup-id  "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $exmod+Shift+e exec i3-msg exit
+
+
+# # # # # # # # # # # # # # # # # # #
+#
+#     Color Stuff
+#
+# # # # # # # # # # # # # # # # # # #
+
+# class                 border  backgr. text    indicator
+client.focused          #000000 #eae9da #000000 #eae9da
+client.focused_inactive #000000 #5f676a #ffffff #5f676a
+client.unfocused        #000000 #30363b #888888 #30363b
+client.urgent           #000000 #9b6465 #ffffff #9b6465
+client.placeholder      #000000 #ffffff #ffffff #000000
+
+
+# # # # # # # # # # # # # # # # # # #
+#
+#     Internet Stuff
+#
+# # # # # # # # # # # # # # # # # # #
+
+
+bindsym $netmod+1 exec $browser mail.google.com
+bindsym $netmod+2 exec $browser www.google.com/calendar
+bindsym $netmod+3 exec $browser www.drive.google.com
+bindsym $netmod+4 exec $browser www.youtube.com
+bindsym $netmod+5 exec $browser www.vcu.edu
+bindsym $netmod+6 exec $browser www.facebook.com
+bindsym $netmod+7 exec $browser www.amazon.com
+
+
+# # # # # # # # # # # # # # # # # # #
+#
+#     Music Stuff
+#
+# # # # # # # # # # # # # # # # # # #
+
+
+bindsym XF86AudioRaiseVolume exec amixer set Master 5+
+bindsym XF86AudioLowerVolume exec amixer set Master 5-
+bindsym XF86AudioMute        exec amixer set Master toggle
+
+
+# # # # # # # # # # # # # # # # # # #
+#
+#     Window Stuff
+#
+# # # # # # # # # # # # # # # # # # #
+
+
+# Toggle gaps
+bindsym $winmod+g       gaps inner all set 0 gaps outer all set 0
+bindsym $winmod+Shift+g gaps inner all set $gapsinner gaps outer all set $gapsouter
+
+# change focus
+bindsym $winmod+h focus left
+bindsym $winmod+j focus down
+bindsym $winmod+k focus up
+bindsym $winmod+l focus right
+
+bindsym $winmod+o open
+
+# move focused window
+bindsym $winmod+Shift+h move left
+bindsym $winmod+Shift+j move down
+bindsym $winmod+Shift+k move up
+bindsym $winmod+Shift+l move right
+
+# move focused window more
+bindsym $winmod+Ctrl+h move left 30 px
+bindsym $winmod+Ctrl+j move down 30 px
+bindsym $winmod+Ctrl+k move up 30 px
+bindsym $winmod+Ctrl+l move right 30 px
+
+# split in horizontal orientation
+bindsym $winmod+u split h
+
+# split in vertical orientation
+bindsym $winmod+i split v
+
+# enter fullscreen mode for the focused container
+bindsym $winmod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $winmod+z layout stacking
+bindsym $winmod+x layout tabbed
+bindsym $winmod+c layout toggle split
+
+# toggle tiling / floating
+bindsym $winmod+Shift+space floating toggle
+
+bindsym $winmod+n sticky enable
+
+# change focus between tiling / floating windows
+bindsym $winmod+m focus mode_toggle
+
+# focus the parent container
+bindsym $winmod+space focus parent
+
+# focus the child container
+bindsym $winmod+Return focus child
+
+
+# # # # # # # # # # # # # # # # # # #
+#
+#     Workspace Stuff
+#
+# # # # # # # # # # # # # # # # # # #
+
+
+# switch to workspace
+bindsym $winmod+1 workspace 1
+bindsym $winmod+2 workspace 2
+bindsym $winmod+3 workspace 3
+bindsym $winmod+4 workspace 4
+bindsym $winmod+5 workspace 5
+bindsym $winmod+q workspace q
+bindsym $winmod+w workspace w
+bindsym $winmod+e workspace e
+bindsym $winmod+a workspace a
+bindsym $winmod+s workspace s
+bindsym $winmod+d workspace d
+
+# throw to workspace
+bindsym $winmod+Shift+1 move container to workspace 1
+bindsym $winmod+Shift+2 move container to workspace 2
+bindsym $winmod+Shift+3 move container to workspace 3
+bindsym $winmod+Shift+4 move container to workspace 4
+bindsym $winmod+Shift+5 move container to workspace 5
+bindsym $winmod+Shift+q move container to workspace q
+bindsym $winmod+Shift+w move container to workspace w
+bindsym $winmod+Shift+e move container to workspace e
+bindsym $winmod+Shift+a move container to workspace a
+bindsym $winmod+Shift+s move container to workspace s
+bindsym $winmod+Shift+d move container to workspace d
+
+# throw and follow
+bindsym $winmod+ctrl+1 move container to workspace 1; workspace 1
+bindsym $winmod+ctrl+2 move container to workspace 2; workspace 2
+bindsym $winmod+ctrl+3 move container to workspace 3; workspace 3
+bindsym $winmod+ctrl+4 move container to workspace 4; workspace 4
+bindsym $winmod+ctrl+5 move container to workspace 5; workspace 5
+bindsym $winmod+ctrl+q move container to workspace q; workspace q
+bindsym $winmod+ctrl+w move container to workspace w; workspace w
+bindsym $winmod+ctrl+e move container to workspace e; workspace e
+bindsym $winmod+ctrl+a move container to workspace a; workspace a
+bindsym $winmod+ctrl+s move container to workspace s; workspace s
+bindsym $winmod+ctrl+d move container to workspace d; workspace d
+
+# Make a window show up on all workspaces
+# ONLY WORKS ON FLOATING
+#sticky toggle
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+	# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+	# Resize the focused window
+	bindsym h resize shrink width 10 px or 1 ppt
+	bindsym j resize grow height 10 px or 1 ppt
+	bindsym k resize shrink height 10 px or 1 ppt
+	bindsym l resize grow width 10 px or 1 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+	# Resize the focused window more
+	bindsym Shift+h resize shrink width 50 px or 5 ppt
+	bindsym Shift+j resize grow height 50 px or 5 ppt
+	bindsym Shift+k resize shrink height 50 px or 5 ppt
+	bindsym Shift+l resize grow width 50 px or 5 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+	# back to normal: Enter or Escape
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
 }
 
-bindsym Mod1+r mode "resize"
+bindsym $winmod+r mode "resize"
 
-### Shortcuts ###
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 1 sset 'Master' 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 1 sset 'Master' 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer sset 'Master' toggle
-bindsym XF86AudioPlay exec --no-startup-id playcontrols toggle
-bindsym XF86AudioStop exec --no-startup-id playcontrols stop
-bindsym XF86AudioPrev exec --no-startup-id playcontrols prev
-bindsym XF86AudioNext exec --no-startup-id playcontrols next
-bindsym XF86Calculator exec --no-startup-id gnome-calculator 
-bindsym XF86TouchpadToggle exec --no-startup-id /home/luca/Documenti/toggletouchpad
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	position bottom
+   status_command i3status --config ~/.config/i3status/config
+   mode hide
+   hidden_state hide
+   modifier $winmod
+   wheel_up_cmd nop
+   wheel_down_cmd nop
+   font Droid Sans Mono for Powerline:style=Regular:size=9:antialias=true
 
-bindsym Mod4+F12 exec --no-startup-id amixer -c 1 sset 'Master' 5%+
-bindsym Mod4+F11 exec --no-startup-id amixer -c 1 sset 'Master' 5%-
-bindsym Mod4+F10 exec --no-startup-id amixer sset 'Master' toggle
-bindsym Mod4+Down exec --no-startup-id playcontrols toggle
-bindsym Mod4+Up exec --no-startup-id playcontrols stop
-bindsym Mod4+Left exec --no-startup-id playcontrols prev
-bindsym Mod4+Right exec --no-startup-id playcontrols next
-bindsym Mod4+KP_Enter exec --no-startup-id gnome-calculator 
-bindsym Mod4+F9 exec --no-startup-id /home/luca/Documenti/toggletouchpad
+   colors {
+      background #30363b
+      statusline #eae9da
+      separator  #eae9ada
 
-bindsym Mod1+shift+g exec --no-startup-id geany
-bindsym Mod1+p exec --no-startup-id pcmanfm
-bindsym Mod1+shift+a exec --no-startup-id audacious
-bindsym Mod1+shift+n exec --no-startup-id urxvt -name ncmpcpp -e ncmpcpp -s playlist 
-bindsym Mod1+shift+f exec --no-startup-id urxvt -name ranger -e ranger
-bindsym Mod1+shift+v exec --no-startup-id vlc
-bindsym Mod1+shift+s exec --no-startup-id spotify --ui.track_notifications_enabled=false
-bindsym Mod1+shift+i exec --no-startup-id icedove
-bindsym Mod1+shift+b exec --no-startup-id iceweasel
-bindsym Mod1+shift+p exec --no-startup-id urxvt -name games-launcher -e /home/luca/Documenti/games.sh
-bindsym Mod1+Print exec --no-startup-id scrot 'Schermata%Y-%m-%d-%T.png' -e 'mv $f ~/Immagini/'
-
-assign [class="Audacious"] $ws6
-assign [class="Vlc"] $ws6
-assign [class="Iceweasel"] $ws1
-assign [class="Telegram"] $ws2
-assign [class="Spotify"] $ws6
-assign [class="pidgin"] $ws2
-assign [class="URxvt" instance="ncmpcpp"] $ws3
-assign [class="URxvt" instance="tty-clock"] $ws3
-assign [class="URxvt" instance="mcabber"] $ws2
-
-
-### floating windows ###
-for_window [class="Steam"] floating enable
-for_window [class="Gimp"] floating enable
-for_window [class="PlayOnLinux"] floating enable
-for_window [class="URxvt" instance="games-launcher$"] move to workspace $ws5, floating enable , move absolute position 400px 200px
-
-
-### Exec ###
-exec --no-startup-id compton -bG --config ~/.config/compton.conf 
-
-exec --no-startup-id iceweasel 
-exec --no-startup-id conky -c ~/.config/panel/empty_conky 
-exec --no-startup-id i3-msg 'workspace $ws3'
-exec --no-startup-id mkfontdir ~/.local/share/fonts && xset +fp ~/.local/share/fonts && xset fp rehash && ~/.config/panel/bar_config
-exec --no-startup-id ~/Telegram
-exec --no-startup-id sh ~/.fehbg
-exec --no-startup-id mpd
-exec --no-startup-id urxvt -name ncmpcpp -e ncmpcpp -s playlist
-exec --no-startup-id urxvt -name tty-clock -e tty-clock -C 2 -c -d 20000000000
-exec --no-startup-id xinput disable 'ETPS/2 Elantech Touchpad' 
-exec --no-startup-id xinput set-prop 'USB Optical Mouse' 261 0.8
-exec --no-startup-id sleep 3 && urxvt -name mcabber -e mcabbert
+      focused_workspace  #30363b #30363b #4e9ab7
+      active_workspace   #30363b #30363b #4e9ab7
+      inactive_workspace #30363b #30363b #eae9da
+      urgent_workspace   #9b6465 #30363b #eae9da
+   }
+}
