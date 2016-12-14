@@ -16,7 +16,7 @@
         "saveAs": "~/.config/i3/config"
      }
   ],
-  "install": "feh lm-sensors curl hddtemp",
+  "install": "feh compton irssi rxvt-unicode",
   "uninstall": "",
   "wallpaper": "unsplash.jpg"
 }

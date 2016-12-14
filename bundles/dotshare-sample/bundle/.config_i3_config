@@ -4,13 +4,8 @@ set $exmod  Mod4
 set $winmod Mod3
 set $netmod Mod2
 
-# Set the gaps between windows.  This is for i3-gaps only
-set $gapsinner 22
-set $gapsouter 48
-
 # Here is where I set all of my default programs
 set $browser firefox
-set $email thunderbird
 
 # Setting up my shadows, and a custom config location to match the others.
 exec compton --config ${XDG_CONFIG_HOME}/compton/config -cb
@@ -20,8 +15,6 @@ exec compton --config ${XDG_CONFIG_HOME}/compton/config -cb
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$exmod to drag floating windows to their wanted position
 floating_modifier $winmod
-gaps inner $gapsinner
-gaps outer $gapsouter
 hide_edge_borders both
 new_window pixel 1
 workspace_auto_back_and_forth yes
@@ -43,20 +36,12 @@ for_window [window_role="pop-up"] floating enable
 
 
 bindsym $exmod+1            exec firefox
-bindsym $exmod+2            exec pcmanfm
-bindsym $exmod+3            exec uxterm -e vim
-bindsym $exmod+4            exec uxterm -class Floating -e ncmpcpp
-bindsym $exmod+5            exec uxterm -e screen irssi --home=${XDG_CONFIG_HOME}/irssi
-bindsym $exmod+a            exec arandr
+bindsym $exmod+2            exec rxvt-unicode -e vim
+bindsym $exmod+3            exec rxvt-unicode -e screen irssi --home=${XDG_CONFIG_HOME}/irssi
 bindsym $exmod+d            exec --no-startup-id i3-dmenu-desktop
-bindsym $exmod+c            exec chromium
-bindsym $exmod+e            exec eclipse
 bindsym $exmod+j            exec scrot -s
-bindsym $exmod+m            exec $email
-bindsym $exmod+n            exec nitrogen
-bindsym $exmod+v            exec vlc
-bindsym $exmod+Return       exec uxterm
-bindsym $exmod+Shift+Return exec uxterm -class Floating
+bindsym $exmod+Return       exec rxvt-unicode
+bindsym $exmod+Shift+Return exec rxvt-unicode -class Floating
 
 # Kill the focused window
 bindsym $exmod+Shift+q      kill
@@ -119,10 +104,6 @@ bindsym XF86AudioMute        exec amixer set Master toggle
 #
 # # # # # # # # # # # # # # # # # # #
 
-
-# Toggle gaps
-bindsym $winmod+g       gaps inner all set 0 gaps outer all set 0
-bindsym $winmod+Shift+g gaps inner all set $gapsinner gaps outer all set $gapsouter
 
 # change focus
 bindsym $winmod+h focus left
@@ -249,7 +230,7 @@ bindsym $winmod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-	position bottom
+   position bottom
    status_command i3status --config ~/.config/i3status/config
    mode hide
    hidden_state hide

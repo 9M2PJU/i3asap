@@ -42,9 +42,6 @@ def main(bundle, ok):
     logging.basicConfig(filename='i3asap.log', level=logging.DEBUG)
     logging.debug("Started new instance "+str(startTime))
 
-    # Download manifest
-    click.echo("* Downloading " + bundle)
-
     manifest = fetchJSON(repository + "manifest.json")
 
     # Download all specified files, e.g. dotfiles and wallpaper
@@ -75,12 +72,15 @@ def main(bundle, ok):
 
     # todo Create new user
     # Wait until downloads are complete
+    click.echo("* Waiting for dotfiles to finish downloading..")
     dotfiles.join()
-    click.echo("* Dotfiles finished downloading")
+    click.echo("* Dotfiles finished downloading!")
 
+    click.echo("* Waiting for wallpaper to finish downloading..")
     wallpaper.join()
-    click.echo("* Wallpaper finished downloading")
+    click.echo("* Wallpaper finished downloading!")
 
+    click.echo("* Configuring display manager..")
     linux.update_display_manager()
 
     click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
