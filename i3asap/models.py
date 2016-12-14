@@ -15,18 +15,21 @@ class AsynkDownloader(Thread):
     """
     """
 
-    def __init__(self, urls, directory, base_url):
+    def __init__(self, urls, base_url):
         Thread.__init__(self)
         self.urls = urls
-        self.directory = directory
         self.base_url = base_url
+
+    def create_dl_folder(self, path):
+        folder = os.path.dirname(path)
+        if not os.path.exists(folder):
+            os.makedirs(folder)
 
     def run(self):
         for remote_file in self.urls:
             handle = urllib2.urlopen(self.base_url + remote_file["name"])
-            fname = self.directory + remote_file["name"]
-            # todo download to correct folder directly
-            with open(fname, "wb") as f_handler:
+            self.create_dl_folder(remote_file["saveAs"])
+            with open(remote_file["saveAs"], "wb") as f_handler:
                 while True:
                     chunk = handle.read(1024)
                     if not chunk:
@@ -34,7 +37,10 @@ class AsynkDownloader(Thread):
                     f_handler.write(chunk)
 
 
-class LinuxSystem():
+class LinuxSystem(object):
+    def __init__(self):
+        pass
+
     def install(self, programs):
         pass
 
@@ -47,7 +53,7 @@ class LinuxSystem():
     def home_dir(self):
         pass
 
-    def verifyOS(self):
+    def verify_os(self):
         if platform != "linux" and platform != "linux2":
             return False
         return True
@@ -79,7 +85,7 @@ class DebianLinux(LinuxSystem):
         return expanduser("~")
 
     def create_user(self, name, username, password):
-        encrypted = crypt.crypt(password, "22")  # todo found only why tf is salt "22"?
+        encrypted = crypt.crypt(password, "22")  # todo why t-f is salt "22"?
         return self.bash(
             "useradd"
             " -p " + encrypted +

@@ -1,24 +1,25 @@
 {
   "name": "Flat Dark",
   "version": "0.1",
-  "files": [
+  "dotfiles": [
      {
-        "name": "unsplash.jpg",
-        "saveTo": "/usr/share/backgrounds/"
-     }, {
         "name": ".Xresources",
-        "saveTo": "~/"
+        "saveAs": "~/.Xresources"
      }, {
         "name": ".config_panel_bar_config",
-        "saveTo": "~/"
+        "saveAs": "./config/panel/bar_config"
      }, {
         "name": ".config_panel_bar_pop",
-        "saveTo": "~/"
+        "saveAs": "~/.config/panel/bar_pop"
      }, {
         "name": ".config_panel_empty_conky",
-        "saveTo": "~/"
+        "saveAs": "~/.config/panel/empty_conky"
+     }, {
+        "name": ".config_i3_config",
+        "saveAs": "~/.config/i3/config"
      }
   ],
   "install": "feh ncdu htop alpine iptraf mc irssi atop",
-  "uninstall": ""
+  "uninstall": "",
+  "wallpaper": "unsplash.jpg"
 }

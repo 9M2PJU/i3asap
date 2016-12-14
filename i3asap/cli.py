@@ -30,7 +30,7 @@ def main(bundle, ok):
     if ok != 'yes':
         sys.exit()
     linux = DebianLinux()
-    if not linux.verifyOS():
+    if not linux.verify_os():
         click.echo("Currently this program only supports Kali Linux. Exiting..")
         sys.exit()
 
@@ -53,8 +53,12 @@ def main(bundle, ok):
     manifest = fetchJSON(repository + "master/bundles/" + bundle + "/manifest.json")
 
     # Download all specified files, e.g. dotfiles and wallpaper
-    downloads = AsynkDownloader(manifest["files"], pwd, repository + "master/bundles/" + bundle + "/bundle/")
-    downloads.start()
+
+    wallpaper = AsynkDownloader(
+        {"name": manifest["wallpaper"],
+         "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}, repository)
+    dotfiles = AsynkDownloader(manifest["files"], repository)
+    dotfiles.start()
 
     click.echo("* Uninstalling " + manifest["uninstall"])
     # Purge specified programs
@@ -72,8 +76,11 @@ def main(bundle, ok):
 
     # todo Create new user
     # Wait until downloads are complete
-    downloads.join()
-    click.echo("* Download finished ")
+    dotfiles.join()
+    click.echo("* Dotfiles finished downloading")
+
+    wallpaper.join()
+    click.echo("* Wallpaper finished downloading")
 
     # todo Move dotfiles, wallpapers etc to proper paths
     # todo Set wallpaper if specified
