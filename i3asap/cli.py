@@ -39,8 +39,7 @@ def main(bundle, ok):
     repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/master/bundles/" + bundle + "/"
 
     # Init logging
-    LOG_FILENAME = linux.home_dir()+'/i3asap.log'
-    logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
+    logging.basicConfig(filename='i3asap.log', level=logging.DEBUG)
     logging.debug("Started new instance "+str(startTime))
 
     # Download manifest
@@ -80,12 +79,10 @@ def main(bundle, ok):
     wallpaper.join()
     click.echo("* Wallpaper finished downloading")
 
-    # todo Move dotfiles, wallpapers etc to proper paths
-    # todo Set wallpaper if specified
-
     click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
-    # todo Switch user to new user
 
+    input("Press Enter to switch to i3...")
+    linux.logout()
 
 if __name__ == "__main__":
     main()

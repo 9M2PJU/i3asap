@@ -51,7 +51,7 @@ class LinuxSystem(object):
     def i3_base_packages(self):
         pass
 
-    def home_dir(self):
+    def logout(self):
         pass
 
     def verify_os(self):
@@ -82,8 +82,8 @@ class DebianLinux(LinuxSystem):
     def i3_base_packages(self):
         return "i3 suckless-tools"
 
-    def home_dir(self):
-        return expanduser("~")
+    def logout(self):
+        return self.bash("service lightdm restart")
 
     def create_user(self, name, username, password):
         encrypted = crypt.crypt(password, "22")  # todo why t-f is salt "22"?
