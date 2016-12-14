@@ -35,29 +35,26 @@ def main(bundle, ok):
         sys.exit()
 
     # Setup properties
-    repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/"
     bundle = slugify(bundle)
-    pwd = linux.home_dir() + "/.i3asap/" + bundle + "/"
-
-    if not os.path.exists(pwd):
-        os.makedirs(pwd)
+    repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/master/bundles/" + bundle + "/"
 
     # Init logging
-    LOG_FILENAME = pwd+'debug.log'
+    LOG_FILENAME = linux.home_dir()+'/i3asap.log'
     logging.basicConfig(filename=LOG_FILENAME, level=logging.DEBUG)
     logging.debug("Started new instance "+str(startTime))
 
     # Download manifest
     click.echo("* Downloading " + bundle)
 
-    manifest = fetchJSON(repository + "master/bundles/" + bundle + "/manifest.json")
+    manifest = fetchJSON(repository + "manifest.json")
 
     # Download all specified files, e.g. dotfiles and wallpaper
 
     wallpaper = AsynkDownloader([{"name": manifest["wallpaper"],
-                                  "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}], repository)
+                                  "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}],
+                                repository + "/bundle/")
 
-    dotfiles = AsynkDownloader(manifest["dotfiles"], repository)
+    dotfiles = AsynkDownloader(manifest["dotfiles"], repository + "/bundle/")
     dotfiles.start()
 
     click.echo("* Uninstalling " + manifest["uninstall"])
