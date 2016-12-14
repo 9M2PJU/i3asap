@@ -19,7 +19,7 @@ import logging
 @click.option('--bundle',
               prompt='What bundle do you want to use:',
               help='The bundle to configure your system after',
-              default='flat-dark')
+              default='dotshare-sample')
 def main(bundle, ok):
     """
     Console script for i3asap
