@@ -9,14 +9,8 @@
         "name": ".xinitrc",
         "saveAs": "~/.xinitrc"
      }, {
-        "name": ".config_panel_bar_config",
-        "saveAs": "./.config/panel/bar_config"
-     }, {
-        "name": ".config_panel_bar_pop",
-        "saveAs": "~/.config/panel/bar_pop"
-     }, {
-        "name": ".config_panel_empty_conky",
-        "saveAs": "~/.config/panel/empty_conky"
+        "name": ".config_i3status_config",
+        "saveAs": "./.config/i3status/config"
      }, {
         "name": ".config_i3_config",
         "saveAs": "~/.config/i3/config"
