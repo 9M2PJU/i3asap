@@ -80,8 +80,11 @@ def main(bundle, ok):
     click.echo("* Wallpaper finished downloading")
 
     click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
-
-    input("Press Enter to switch to i3...")
+    
+    try:
+        input("Press Enter to switch to i3...")
+    except SyntaxError:
+        pass
     linux.logout()
 
 if __name__ == "__main__":
