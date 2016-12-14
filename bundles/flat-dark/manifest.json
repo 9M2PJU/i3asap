@@ -10,7 +10,7 @@
         "saveAs": "~/.xinitrc"
      }, {
         "name": ".config_panel_bar_config",
-        "saveAs": "./config/panel/bar_config"
+        "saveAs": "./.config/panel/bar_config"
      }, {
         "name": ".config_panel_bar_pop",
         "saveAs": "~/.config/panel/bar_pop"

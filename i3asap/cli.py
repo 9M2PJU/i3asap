@@ -81,10 +81,12 @@ def main(bundle, ok):
     wallpaper.join()
     click.echo("* Wallpaper finished downloading")
 
+    linux.update_display_manager()
+
     click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
 
     try:
-        input("Press Enter to switch to i3...")
+        input("Press Enter to switch to i3 ..")
     except SyntaxError:
         pass
     linux.logout()

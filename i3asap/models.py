@@ -82,6 +82,11 @@ class DebianLinux(LinuxSystem):
     def i3_base_packages(self):
         return "i3 suckless-tools"
 
+    def update_display_manager(self):
+        self.bash("ln -s ~/.xinitrc ~/.xsession")
+        with open('/etc/lightdm/lightdm.conf', 'a') as lightdm:
+            lightdm.write('user-session=i3')
+
     def logout(self):
         return self.bash("service lightdm restart")
 
