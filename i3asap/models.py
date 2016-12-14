@@ -80,11 +80,12 @@ class DebianLinux(LinuxSystem):
         return self.bash("DEBIAN_FRONTEND=noninteractive apt-get -yq purge " + programs)
 
     def i3_base_packages(self):
-        return "i3 suckless-tools i3-dmenu-desktop"
+        return "i3 suckless-tools i3status"
 
     def switch_wm(self):
-        with open("/etc/lightdm/lightdm.conf", "a") as conf:
-            conf.write("user-session=i3")
+        # seems to be unnecessary (?)
+        # with open("/etc/lightdm/lightdm.conf", "a") as conf:
+        #    conf.write("user-session=i3")
         return self.bash("service lightdm restart")
 
     def create_user(self, name, username, password):

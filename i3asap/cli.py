@@ -68,7 +68,7 @@ def main(bundle, ok):
 
     # Install i3
     click.echo("* Installing " + linux.i3_base_packages())
-    linux.install(linux.i3_base_packages())
+    logging.debug(linux.install(linux.i3_base_packages()))
 
     # todo Create new user
     # Wait until downloads are complete
