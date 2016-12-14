@@ -80,7 +80,7 @@ class DebianLinux(LinuxSystem):
         return self.bash("DEBIAN_FRONTEND=noninteractive apt-get -yq purge " + programs)
 
     def i3_base_packages(self):
-        return "i3 suckless-tools"
+        return "i3 suckless-tools i3-dmenu-desktop"
 
     def logout(self):
         return self.bash("service lightdm restart")
