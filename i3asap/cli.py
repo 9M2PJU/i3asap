@@ -4,10 +4,10 @@ import click
 from os.path import expanduser
 import os
 
-import time
+from datetime import datetime
 
 from helpers import slugify, fetchJSON
-from models import AsynkDownloader
+from models import AsynkDownloader, KaliLinux
 
 
 @click.command()
@@ -16,11 +16,15 @@ from models import AsynkDownloader
               help='The bundle to configure your system after',
               default='flat-dark')
 def main(bundle):
-    """Console script for i3asap"""
-    i3_base_packages = "i3-wm i3-lock i3-bar dwm-tools suckless-tools"
-    repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/"
-    pwd = expanduser("~") + "/.i3asap/" + bundle + "/"
+    """
+    Console script for i3asap
+    """
+    startTime = datetime.now()
+
+    nix = KaliLinux()
     bundle = slugify(bundle)
+    pwd = nix.home_dir() + "/.i3asap/" + bundle + "/"
+    repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/"
 
     if not os.path.exists(pwd):
         os.makedirs(pwd)
@@ -43,18 +47,18 @@ def main(bundle):
         click.echo("apt-get install " + manifest["install"])
 
     # Install i3
-    click.echo("apt-get install " + i3_base_packages)
+    click.echo("apt-get install " + nix.i3_base_packages())
 
     # todo Create new user
-
     # Wait until downloads are complete
     downloads.join()
 
     # todo Move dotfiles, wallpapers etc to proper paths
     # todo Set wallpaper if specified
+
+    click.echo("Done! Time elapsed: " + str(datetime.now() - startTime))
     # todo Switch user to new user
 
+
 if __name__ == "__main__":
-    start = time.time()
     main()
-    end = time.time()
