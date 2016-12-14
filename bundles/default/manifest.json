@@ -5,9 +5,6 @@
      {
         "name": ".Xresources",
         "saveAs": "~/.Xresources"
-     },{
-        "name": ".xinitrc",
-        "saveAs": "~/.xinitrc"
      }, {
         "name": ".config_i3_config",
         "saveAs": "~/.config/i3/config"
