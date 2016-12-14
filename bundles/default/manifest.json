@@ -3,8 +3,8 @@
   "version": "0.1",
   "dotfiles": [
      {
-        "name": ".Xresources",
-        "saveAs": "~/.Xresources"
+        "name": ".Xdefaults",
+        "saveAs": "~/.Xdefaults"
      }, {
         "name": ".config_i3_config",
         "saveAs": "~/.config/i3/config"
