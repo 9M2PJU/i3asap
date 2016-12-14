@@ -24,7 +24,7 @@ def main(bundle, ok):
     """
     Console script for i3asap
     """
-    startTime = datetime.now()
+    start_time = datetime.now()
 
     # check if it is reasonable to start at all
     if ok != 'yes':
@@ -40,7 +40,7 @@ def main(bundle, ok):
 
     # Init logging
     logging.basicConfig(filename='i3asap.log', level=logging.DEBUG)
-    logging.debug("Started new instance "+str(startTime))
+    logging.debug("Started at "+str(start_time))
 
     manifest = fetchJSON(repository + "manifest.json")
 
@@ -80,7 +80,7 @@ def main(bundle, ok):
     wallpaper.join()
     click.echo("* Wallpaper finished downloading!")
 
-    click.echo("* Done! Time elapsed: " + str(datetime.now() - startTime))
+    click.echo("* Done! Time elapsed: " + str(datetime.now() - start_time))
 
     try:
         input("Press Enter to switch to i3 ..")
