@@ -1,5 +1,5 @@
 ~~~
-Note: Early development - consider the below a roadmap
+Note: Early development
 ~~~
 
 # i3asap
