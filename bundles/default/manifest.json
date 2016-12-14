@@ -1,5 +1,5 @@
 {
-  "name": "Dotshare sample",
+  "name": "Default bundle",
   "version": "0.1",
   "dotfiles": [
      {
@@ -8,9 +8,6 @@
      },{
         "name": ".xinitrc",
         "saveAs": "~/.xinitrc"
-     }, {
-        "name": ".config_i3status_config",
-        "saveAs": "./.config/i3status/config"
      }, {
         "name": ".config_i3_config",
         "saveAs": "~/.config/i3/config"
