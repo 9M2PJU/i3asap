@@ -1,33 +1,40 @@
 # -*- coding: utf-8 -*-
 
 import click
-from os.path import expanduser
-import os, sys
+import os
+import sys
 
 from datetime import datetime
 
 from helpers import slugify, fetchJSON
-from models import AsynkDownloader, KaliLinux
+from models import AsynkDownloader, DebianLinux
 
 
 @click.command()
+@click.option('--ok',
+              prompt='This program must only be run in live environments as it may '
+                     'permanently screw up your system. Are you sure you want to continue?',
+              default='yes')
 @click.option('--bundle',
               prompt='What bundle do you want to use:',
               help='The bundle to configure your system after',
               default='flat-dark')
-def main(bundle):
+def main(bundle, ok):
     """
     Console script for i3asap
     """
     startTime = datetime.now()
 
-    nix = KaliLinux()
-    if not nix.verifyOS():
+    if ok != 'yes':
+        sys.exit()
+
+    linux = DebianLinux()
+    if not linux.verifyOS():
         click.echo("Currently this program only supports Kali Linux. Exiting..")
         sys.exit()
 
     bundle = slugify(bundle)
-    pwd = nix.home_dir() + "/.i3asap/" + bundle + "/"
+    pwd = linux.home_dir() + "/.i3asap/" + bundle + "/"
     repository = "https://raw.githubusercontent.com/SteveTabernacle/i3asap/"
 
     if not os.path.exists(pwd):
@@ -43,15 +50,15 @@ def main(bundle):
     downloads.start()
 
     # Purge specified programs
-    if "purge" in manifest and len(manifest["purge"]) > 1:
-        click.echo("apt-get purge " + manifest["purge"])
+    if "purge" in manifest and len(manifest["uninstall"]) > 1:
+        linux.uninstall(manifest["uninstall"])
 
     # Install specified programs
     if "install" in manifest and len(manifest["install"]) > 1:
-        click.echo("apt-get install " + manifest["install"])
+        linux.install(manifest["install"])
 
     # Install i3
-    click.echo("apt-get install " + nix.i3_base_packages())
+    linux.install(linux.i3_base_packages())
 
     # todo Create new user
     # Wait until downloads are complete

@@ -20,5 +20,5 @@
      }
   ],
   "install": "feh ncdu htop alpine iptraf mc irssi atop",
-  "purge": ""
+  "uninstall": ""
 }

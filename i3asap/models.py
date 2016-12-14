@@ -34,7 +34,7 @@ class AsynkDownloader(Thread):
                     f_handler.write(chunk)
 
 
-class NixSystem():
+class LinuxSystem():
     def install(self, programs):
         pass
 
@@ -65,15 +65,15 @@ class NixSystem():
         return (''.join(stdout)).strip()
 
 
-class KaliLinux(NixSystem):
+class DebianLinux(LinuxSystem):
     def install(self, programs):
-        print("apt-get install " + programs)
+        return self.bash("DEBIAN_FRONTEND=noninteractive apt-get -yq install " + programs)
 
     def uninstall(self, programs):
-        print("apt-get purge " + programs)
+        return self.bash("DEBIAN_FRONTEND=noninteractive apt-get -yq purge " + programs)
 
     def i3_base_packages(self):
-        return self.install("i3 suckless-tools")
+        return "i3 suckless-tools"
 
     def home_dir(self):
         return expanduser("~")
