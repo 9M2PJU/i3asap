@@ -28,8 +28,9 @@ class AsynkDownloader(Thread):
     def run(self):
         for remote_file in self.urls:
             handle = urllib2.urlopen(self.base_url + remote_file["name"])
-            self.create_dl_folder(remote_file["saveAs"])
-            with open(remote_file["saveAs"], "wb") as f_handler:
+            save_as = expanduser(remote_file["saveAs"])
+            self.create_dl_folder(save_as)
+            with open(save_as, "wb") as f_handler:
                 while True:
                     chunk = handle.read(1024)
                     if not chunk:

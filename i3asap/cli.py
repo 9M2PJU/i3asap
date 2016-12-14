@@ -53,6 +53,7 @@ def main(bundle, ok):
     wallpaper = AsynkDownloader([{"name": manifest["wallpaper"],
                                   "saveAs": "/usr/share/backgrounds/" + manifest["wallpaper"]}],
                                 repository + "/bundle/")
+    wallpaper.start()
 
     dotfiles = AsynkDownloader(manifest["dotfiles"], repository + "/bundle/")
     dotfiles.start()
